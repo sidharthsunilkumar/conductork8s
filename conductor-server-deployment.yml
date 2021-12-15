@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conductor-server-deployment
+  namespace: orchestration-layer
+  labels:
+    app: conductor-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conductor-server
+      type: conductor-server
+  template:
+    metadata:
+      name: conductor-server-pod
+      labels:
+        app: conductor-server
+        type: conductor-server
+    spec:
+      containers:
+        - name: conductor-server
+          image: sebinmaret/conductor-server:4.1
+          imagePullPolicy: "Always"
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "0.8"
+              memory: "800Mi"
+          ports:
+            - containerPort: 8080
+          env: 
+            - name: CONFIG_PROP
+              value: "config-postgres.properties"
+            - name: ELASTICSEARCH_IP
+              value: "es.orchestration-layer"
+            - name: ELASTIC_USER_NAME
+              value: "elastic"
+            - name: ELASTIC_PASSWORD
+              value: "changeme"
+            - name: POSTGRES_PASSWORD
+              value: "changeme"
+            - name: POSTGRES_USERNAME
+              value: "postgres"
+            - name: POSTGRES_HOST
+              value: "postgres-db-postgresql-headless.postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "conductor"
+            
+
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: conductor-server
+  namespace: orchestration-layer
+  labels:
+    app: conductor-server
+    type: conductor-server-service
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 8080
+      port: 8080
+      nodePort: 31515
+  selector:
+    app: conductor-server
+    type: conductor-server
+
+# ---
+# apiVersion: batch/v1
+# kind: Job
+# metadata:
+#   name: workflow-registration
+#   namespace: orchestration-layer
+# spec:
+#   template:
+#     spec:
+#       containers:
+#       - name: workflow-registration
+#         image: sebinmaret/conductor-registration:1
+#         env: 
+#           - name: CONDUCTOR_SERVER_IP
+#             value: "conductor-server.orchestration-layer"
+#           - name: CONDUCTOR_SERVER_PORT
+#             value: "80"
+#       restartPolicy: Never
+#   backoffLimit: 4
