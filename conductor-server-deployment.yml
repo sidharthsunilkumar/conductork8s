@@ -22,13 +22,13 @@ spec:
         - name: conductor-server
           image: sebinmaret/conductor-server:4.1
           imagePullPolicy: "Always"
-          resources:
-            limits:
-              cpu: "1"
-              memory: "1Gi"
-            requests:
-              cpu: "0.8"
-              memory: "800Mi"
+          # resources:
+          #   limits:
+          #     cpu: "1"
+          #     memory: "1Gi"
+          #   requests:
+          #     cpu: "0.8"
+          #     memory: "800Mi"
           ports:
             - containerPort: 8080
           env: 
