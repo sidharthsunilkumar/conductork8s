@@ -1,3 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: orchestration-layer
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,26 +25,20 @@ spec:
     spec:
       containers:
         - name: conductor-server
-          image: sebinmaret/conductor-server:4.1
+          image: sidharthsunilkumar/conductor-server-postgres:v1
           imagePullPolicy: "Always"
-          # resources:
-          #   limits:
-          #     cpu: "1"
-          #     memory: "1Gi"
-          #   requests:
-          #     cpu: "0.8"
-          #     memory: "800Mi"
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "1"
+              memory: "1Gi"
           ports:
             - containerPort: 8080
           env: 
             - name: CONFIG_PROP
               value: "config-postgres.properties"
-            - name: ELASTICSEARCH_IP
-              value: "es.orchestration-layer"
-            - name: ELASTIC_USER_NAME
-              value: "elastic"
-            - name: ELASTIC_PASSWORD
-              value: "changeme"
             - name: POSTGRES_PASSWORD
               value: "changeme"
             - name: POSTGRES_USERNAME
@@ -50,6 +49,21 @@ spec:
               value: "5432"
             - name: POSTGRES_DB
               value: "conductor"
+            - name: POSTGRES_URL
+              value: "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
+            # jdbc:postgresql://postgres-db-postgresql-headless.postgres
+            # jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432
+            # "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
+            # jdbc:postgresql://postgres-db-postgresql
+            # jdbc:postgresql://postgres-db-postgresql/conductor
+            # jdbc:postgresql://postgres-db-postgresql:5432/conductor
+            # jdbc:postgresql:postgres-db-postgresql
+            # - name: ELASTICSEARCH_IP
+            #   value: "es.orchestration-layer"
+            # - name: ELASTIC_USER_NAME
+            #   value: "elastic"
+            # - name: ELASTIC_PASSWORD
+            #   value: "changeme"
             
 
 ---
