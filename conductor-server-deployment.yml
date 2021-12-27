@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: conductor-server
-          image: sidharthsunilkumar/conductor-server-postgres:v1
+          image: sidharthsunilkumar/conductor-server-prometheus:v1
           imagePullPolicy: "Always"
           # resources:
           #   limits:
