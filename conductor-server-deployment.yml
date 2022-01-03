@@ -27,13 +27,13 @@ spec:
         - name: conductor-server
           image: sidharthsunilkumar/conductor-server-prometheus:v1
           imagePullPolicy: "Always"
-          # resources:
-          #   limits:
-          #     cpu: "1"
-          #     memory: "1Gi"
-          #   requests:
-          #     cpu: "1"
-          #     memory: "1Gi"
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: "200Mi"
+            requests:
+              cpu: "0.2"
+              memory: "200Mi"
           ports:
             - containerPort: 8080
           env: 
@@ -84,6 +84,25 @@ spec:
   selector:
     app: conductor-server
     type: conductor-server
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata: 
+#   name: conductor-server1
+#   namespace: orchestration-layer
+#   labels:
+#     app: conductor-server
+#     type: conductor-server-service1
+# spec:
+#   type: NodePort
+#   ports:
+#     - targetPort: 9090
+#       port: 9090
+#       nodePort: 31516
+#   selector:
+#     app: conductor-server
+#     type: conductor-server
 
 # ---
 # apiVersion: batch/v1
