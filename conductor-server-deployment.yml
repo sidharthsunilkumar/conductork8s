@@ -39,7 +39,8 @@ spec:
             - containerPort: 8080
           env: 
             - name: CONFIG_PROP
-              value: "config-postgres.properties"
+              value: "config-local.properties"
+              # value: "config-postgres.properties"
             - name: POSTGRES_PASSWORD
               value: "changeme"
             - name: POSTGRES_USERNAME
