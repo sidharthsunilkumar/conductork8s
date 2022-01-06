@@ -25,13 +25,13 @@ spec:
     spec:
       containers:
         - name: conductor-server
-          # image: sidharthsunilkumar/conductor-server-prometheus:v1
-          image: sidharthsunilkumar/conductor-server-v3.4.0:v1
+          image: sidharthsunilkumar/conductor-server-prometheus:v1
+          # image: sidharthsunilkumar/conductor-server-v3.4.0:v1
           imagePullPolicy: "Always"
           resources:
             limits:
-              cpu: "1.4"
-              memory: "2Gi"
+              cpu: "1.2"
+              memory: "1.2Gi"
             requests:
               cpu: "1"
               memory: "1Gi"
@@ -39,8 +39,8 @@ spec:
             - containerPort: 8080
           env: 
             - name: CONFIG_PROP
-              value: "config-local.properties"
-              # value: "config-postgres.properties"
+              # value: "config-local.properties"
+              value: "config-postgres.properties"
             - name: POSTGRES_PASSWORD
               value: "changeme"
             - name: POSTGRES_USERNAME
