@@ -81,7 +81,7 @@ spec:
   type: LoadBalancer
   ports:
     - targetPort: 8080
-      port: 8080
+      port: 80
   selector:
     app: conductor-server
     type: conductor-server
