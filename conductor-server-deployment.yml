@@ -11,7 +11,7 @@ metadata:
   labels:
     app: conductor-server
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: conductor-server
@@ -30,11 +30,11 @@ spec:
           imagePullPolicy: "Always"
           resources:
             limits:
-              cpu: "1.4"
-              memory: "1Gi"
+              cpu: "0.3"
+              memory: "300Mi"
             requests:
-              cpu: "1"
-              memory: "600Mi"
+              cpu: "0.3"
+              memory: "300Mi"
           ports:
             - containerPort: 8080
           env: 
@@ -78,11 +78,10 @@ metadata:
     app: conductor-server
     type: conductor-server-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - targetPort: 8080
-      port: 8080
-      nodePort: 31515
+      port: 80
   selector:
     app: conductor-server
     type: conductor-server
