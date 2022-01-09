@@ -11,7 +11,7 @@ metadata:
   labels:
     app: conductor-server
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: conductor-server
@@ -30,8 +30,8 @@ spec:
           imagePullPolicy: "Always"
           resources:
             limits:
-              cpu: "0.4"
-              memory: "300Mi"
+              cpu: "1.4"
+              memory: "600Mi"
             requests:
               cpu: "0.4"
               memory: "300Mi"
