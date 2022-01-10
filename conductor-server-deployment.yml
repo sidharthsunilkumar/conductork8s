@@ -43,19 +43,20 @@ spec:
               # value: "config-local.properties"
               value: "config-postgres.properties"
             - name: POSTGRES_PASSWORD
-              value: "Dbpass100$"
+              value: "changeme"
+              # value: "Dbpass100$"
             - name: POSTGRES_USERNAME
               value: "postgres"
             - name: POSTGRES_HOST
-              value: "34.93.22.43"
-              # value: "postgres-db-postgresql-headless.postgres"
+              # value: "34.93.22.43"
+              value: "postgres-db-postgresql-headless.postgres"
             - name: POSTGRES_PORT
               value: "5432"
             - name: POSTGRES_DB
               value: "conductor"
             - name: POSTGRES_URL
-              value: "jdbc:postgresql://34.93.22.43:5432/conductor"
-              # value: "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
+              # value: "jdbc:postgresql://34.93.22.43:5432/conductor"
+              value: "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
             # jdbc:postgresql://postgres-db-postgresql-headless.postgres
             # jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432
             # "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
