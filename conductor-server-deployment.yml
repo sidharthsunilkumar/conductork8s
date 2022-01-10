@@ -11,7 +11,7 @@ metadata:
   labels:
     app: conductor-server
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: conductor-server
@@ -54,7 +54,7 @@ spec:
             - name: POSTGRES_DB
               value: "conductor"
             - name: POSTGRES_URL
-              value: "jdbc:postgresql://34.93.22.43:5432/conductor"
+              value: "jdbc:postgresql://34.93.22.43/conductor"
               # value: "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
             # jdbc:postgresql://postgres-db-postgresql-headless.postgres
             # jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432
