@@ -56,7 +56,7 @@ spec:
             - name: POSTGRES_DB
               value: "conductor"
             - name: POSTGRES_URL
-              value: "jdbc:postgresql://postgres2:Dbpass100$@10.190.64.2:5432/conductor"
+              value: "jdbc:postgresql://10.190.64.2:5432/conductor"
               # value: "jdbc:postgresql://34.93.22.43:5432/conductor"
               # value: "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
             # jdbc:postgresql://postgres-db-postgresql-headless.postgres
