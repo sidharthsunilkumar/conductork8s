@@ -36,11 +36,10 @@ metadata:
     app: contact-service
     type: contact-service-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - targetPort: 9002
       port: 9002
-      nodePort: 31515
   selector:
     app: contact-service
     type: contact-service
