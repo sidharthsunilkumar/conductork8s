@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contact-service-soap-deployment
+  namespace: orchestration-layer
+  labels:
+    app: contact-service-soap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contact-service-soap
+      type: contact-service-soap
+  template:
+    metadata:
+      name: contact-service-soap
+      labels:
+        app: contact-service-soap
+        type: contact-service-soap
+    spec:
+      containers:
+        - name: contact-service-soap
+          image: sidharthsunilkumar/contact-service-soap:v1
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 8080
+
+
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: contact-service-soap
+  namespace: orchestration-layer
+  labels:
+    app: contact-service-soap
+    type: contact-service-service-soap
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 8080
+      port: 8080
+  selector:
+    app: contact-service-soap
+    type: contact-service-soap
