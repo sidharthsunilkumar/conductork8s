@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contact-service-deployment
+  namespace: orchestration-layer
+  labels:
+    app: contact-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contact-service
+      type: contact-service
+  template:
+    metadata:
+      name: contact-service
+      labels:
+        app: contact-service
+        type: contact-service
+    spec:
+      containers:
+        - name: contact-service
+          image: sidharthsunilkumar/contact-service:v1
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 9002
+
+
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: contact-service
+  namespace: orchestration-layer
+  labels:
+    app: contact-service
+    type: contact-service-service
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 9002
+      port: 9002
+      nodePort: 31515
+  selector:
+    app: contact-service
+    type: contact-service
