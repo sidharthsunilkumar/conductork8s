@@ -25,10 +25,10 @@ spec:
     spec:
       containers:
         - name: conductor-server
-          # image: sidharthsunilkumar/conductor-server-prometheus:v1
+          image: sidharthsunilkumar/conductor-server-prometheus:v1
           # image: sidharthsunilkumar/conductor-server-v3.4.0:v1
           # image: sidharthsunilkumar/conductor-server-elastic:v1
-          image: sidharthsunilkumar/conductor-server-dbpools:v1
+          # image: sidharthsunilkumar/conductor-server-dbpools:v1
           imagePullPolicy: "Always"
           resources:
             limits:
