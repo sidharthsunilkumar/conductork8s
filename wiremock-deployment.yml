@@ -34,7 +34,7 @@ metadata:
     app: wiremock
     type: wiremock
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - targetPort: 8080
       port: 8080
