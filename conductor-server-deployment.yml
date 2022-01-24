@@ -1,8 +1,8 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: orchestration-layer
----
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: orchestration-layer
+# ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -25,8 +25,9 @@ spec:
     spec:
       containers:
         - name: conductor-server
-          image: sidharthsunilkumar/conductor-server-prometheus:v1
+          # image: sidharthsunilkumar/conductor-server-prometheus:v1
           # image: sidharthsunilkumar/conductor-server-v3.4.0:v1
+          image: sidharthsunilkumar/conductor-server-elastic
           imagePullPolicy: "Always"
           resources:
             limits:
@@ -40,8 +41,8 @@ spec:
             - containerPort: 80
           env: 
             - name: CONFIG_PROP
-              value: "config-local.properties"
-              # value: "config-postgres.properties"
+              # value: "config-local.properties"
+              value: "config-postgres.properties"
             - name: POSTGRES_PASSWORD
               value: "changeme"
               # value: "Dbpass100$"
