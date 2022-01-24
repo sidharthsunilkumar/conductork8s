@@ -22,13 +22,6 @@ spec:
         - name: contact-service
           image: sidharthsunilkumar/contact-service:v1
           imagePullPolicy: "Always"
-          resources:
-            limits:
-              cpu: "1"
-              memory: "600Mi"
-            requests:
-              cpu: "0.4"
-              memory: "300Mi"
           ports:
             - containerPort: 9002
 
