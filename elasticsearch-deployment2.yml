@@ -25,7 +25,8 @@ spec:
     spec:
       containers:
         - name: elasticsearch
-          image: sebinmaret/elasticsearch:1
+          image: elastic
+          # image: sebinmaret/elasticsearch:1
           ports:
             - containerPort: 9300
             - containerPort: 9200
