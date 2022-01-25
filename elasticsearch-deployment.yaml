@@ -49,7 +49,7 @@ metadata:
     app: myapp
     type: elasticsearch-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: tcp
       targetPort: 9300
