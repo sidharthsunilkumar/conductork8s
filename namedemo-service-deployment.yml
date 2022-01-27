@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: namedemo-service
-          image: sidharthsunilkumar/namedemo-service:v1
+          image: sidharthsunilkumar/namedemo-service:v2
           imagePullPolicy: "Always"
           ports:
             - containerPort: 8081
