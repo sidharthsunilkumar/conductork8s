@@ -6,7 +6,7 @@ metadata:
   labels:
     app: namedemo-service
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: namedemo-service
