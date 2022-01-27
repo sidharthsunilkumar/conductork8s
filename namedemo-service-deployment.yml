@@ -22,6 +22,13 @@ spec:
         - name: namedemo-service
           image: sidharthsunilkumar/namedemo-service:v1
           imagePullPolicy: "Always"
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "0.4"
+              memory: "300Mi"
           ports:
             - containerPort: 8081
 
