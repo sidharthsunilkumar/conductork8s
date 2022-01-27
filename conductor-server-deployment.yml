@@ -11,7 +11,7 @@ metadata:
   labels:
     app: conductor-server
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: conductor-server
@@ -27,7 +27,7 @@ spec:
         - name: conductor-server
           # image: sidharthsunilkumar/conductor-server-prometheus:v1
           # image: sidharthsunilkumar/conductor-server-v3.4.0:v1
-          image: sidharthsunilkumar/conductor-server-elastic:v4      #in v5 elastic is disabled(just to check); v4 has all req config
+          image: sidharthsunilkumar/conductor-server-elastic:v6      #in v5 elastic is disabled(just to check); v4 has all req config; v6 elastic search with prometheus and 25 db pools
           # image: sidharthsunilkumar/conductor-server-dbpools:v1
           # image: sidharthsunilkumar/conductor-server-dbpools:v1 # with hikari-25 and tomcat-400
           imagePullPolicy: "Always"

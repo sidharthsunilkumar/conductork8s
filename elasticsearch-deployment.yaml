@@ -26,6 +26,13 @@ spec:
       containers:
         - name: elasticsearch
           image: elasticsearch:6.8.15
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "0.4"
+              memory: "300Mi"
           ports:
             - containerPort: 9300
             - containerPort: 9200
