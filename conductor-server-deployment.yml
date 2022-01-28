@@ -28,7 +28,7 @@ spec:
           # image: sidharthsunilkumar/conductor-server-prometheus:v1
           # image: sidharthsunilkumar/conductor-server-v3.4.0:v1
           # image: sidharthsunilkumar/conductor-server-elastic:v4      #in v5 elastic is disabled(just to check); v4 has all req config; v6 elastic search with prometheus and 25 db pools
-          image: sidharthsunilkumar/conductor-server-dbpools:v1
+          image: sidharthsunilkumar/conductor-server-dbpools:v2  #v2 has prometheus enabled
           # image: sidharthsunilkumar/conductor-server-dbpools:v1 # with hikari-25 and tomcat-400
           imagePullPolicy: "Always"
           resources:
