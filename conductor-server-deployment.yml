@@ -46,24 +46,24 @@ spec:
               # value: "config-local.properties"
               value: "config-postgres.properties"
             - name: POSTGRES_PASSWORD
-              # value: "changeme"
-              value: "Dbpass100$"
+              value: "changeme"
+              # value: "Dbpass100$"
             - name: POSTGRES_USERNAME
-              value: "postgres2"
-              # value: "postgres"
+              # value: "postgres2"
+              value: "postgres"
             - name: POSTGRES_HOST
-              value: "10.190.64.2"
+              # value: "10.190.64.2"
               # value: "conductor.cemxfptfewjg.us-east-1.rds.amazonaws.com"
-              # value: "postgres-db-postgresql-headless.postgres"
+              value: "postgres-db-postgresql-headless.postgres"
               value: 
             - name: POSTGRES_PORT
               value: "5432"
             - name: POSTGRES_DB
               value: "conductor"
             - name: POSTGRES_URL
-              value: "jdbc:postgresql://10.190.64.2:5432/conductor" # works in gcloud postgresql
+              # value: "jdbc:postgresql://10.190.64.2:5432/conductor" # works in gcloud postgresql
               # value: "jdbc:postgresql://34.93.67.59:5432/conductor"   #works in minikube
-              # value: "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
+              value: "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
             # jdbc:postgresql://postgres-db-postgresql-headless.postgres
             # jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432
             # "jdbc:postgresql://postgres-db-postgresql-headless.postgres:5432/conductor"
