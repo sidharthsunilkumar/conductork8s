@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wiremock-deployment
-  # namespace: orchestration-layer
+  namespace: orchestration-layer
   labels:
     app: wiremock
 spec:
