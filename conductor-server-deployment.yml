@@ -31,6 +31,7 @@ spec:
           image: sidharthsunilkumar/conductor-server-dbpools:v2  #v2 has prometheus enabled
           # image: sidharthsunilkumar/conductor-server-dbpools:v1 # with hikari-25 and tomcat-400
           imagePullPolicy: "Always"
+          args: ["-Dcom.sun.management.jmxremote", "-Dcom.sun.management.jmxremote.ssl=false", "-Dcom.sun.management.jmxremote.authenticate=false", "-Dcom.sun.management.jmxremote.port=1098"]
           resources:
             limits:
               cpu: "1"
@@ -43,8 +44,8 @@ spec:
             - containerPort: 80
           env: 
             - name: CONFIG_PROP
-              # value: "config-local.properties"
-              value: "config-postgres.properties"
+              value: "config-local.properties"
+              # value: "config-postgres.properties"
             - name: POSTGRES_PASSWORD
               # value: "changeme"
               value: "Dbpass100$"
