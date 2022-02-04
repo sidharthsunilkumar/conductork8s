@@ -1,8 +1,8 @@
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   name: orchestration-layer
-# ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: orchestration-layer
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -28,7 +28,7 @@ spec:
           # image: sidharthsunilkumar/conductor-server-prometheus:v1
           # image: sidharthsunilkumar/conductor-server-v3.4.0:v1
           # image: sidharthsunilkumar/conductor-server-elastic:v4      #in v5 elastic is disabled(just to check); v4 has all req config; v6 elastic search with prometheus and 25 db pools
-          image: sidharthsunilkumar/conductor-server-dbpools:v2  #v2 has prometheus enabled
+          image: sidharthsunilkumar/conductor-server-dbpools:v2  #v2 has prometheus enabled, v3->v2+web.exposure.include=*
           # image: sidharthsunilkumar/conductor-server-dbpools:v1 # with hikari-25 and tomcat-400
           imagePullPolicy: "Always"
           resources:
@@ -41,6 +41,7 @@ spec:
           ports:
             - containerPort: 8080
             - containerPort: 80
+            # - containerPort: 9010
           env: 
             - name: CONFIG_PROP
               # value: "config-local.properties"
@@ -75,8 +76,8 @@ spec:
               # value: "es.orchestration-layer"
               # value: "es"
               # value: "es.orchestration-layer.svc.cluster.local"
-            - name: ELASTICSEARCH_URL
-              value: "http://es:9200"
+            # - name: ELASTICSEARCH_URL
+            #   value: "http://es:9200"
             # - name: ELASTIC_USER_NAME
             #   value: "elastic"
             # - name: ELASTIC_PASSWORD
@@ -84,6 +85,8 @@ spec:
             # - name: ELASTICSEARCH_VERSION
             #   value: "6"
               # 9200 at my-release-elasticsearch-coordinating-only.default.svc.cluster.local
+            # - name: JAVA_OPTS
+            #   value: "-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.rmi.port=9010"
             
 
 ---
@@ -100,6 +103,10 @@ spec:
   ports:
     - targetPort: 8080
       port: 80
+      # name: mainport
+    # - targetPort: 9010
+    #   port: 9010
+    #   name: jport
   selector:
     app: conductor-server
     type: conductor-server
